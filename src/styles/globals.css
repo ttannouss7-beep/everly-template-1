@@ -1,0 +1,388 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --ivory:          #F8F5EF;
+  --cream:          #F2EDE3;
+  --champagne:      #E8DFC8;
+  --champagne-light:#F1EBDA;
+  --champagne-dark: #C4B28A;
+  --gold:           #C5A46D;
+  --gold-light:     #DFC28A;
+  --gold-soft:      #9E7E4A;
+  --forest:         #1B2F2F;
+  --forest-dark:    #122424;
+  --forest-light:   #243D3D;
+  --sage-dark:      #4A3728;
+  --sage:           #6B5744;
+  --sage-light:     #9E8560;
+  --carbon:         #1A1008;
+
+  --shadow-soft:    0 2px 15px -3px rgba(27,47,47,.12), 0 4px 6px -2px rgba(27,47,47,.06);
+  --shadow-elegant: 0 10px 40px -10px rgba(27,47,47,.18), 0 4px 15px -3px rgba(27,47,47,.10);
+
+  --transition-smooth: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  --transition-luxury: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+/* ============================================================
+   BASE RESET & DEFAULTS
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  background-color: var(--ivory);
+  color: var(--sage-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root { overflow-x: hidden; }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background-color: var(--gold);
+  color: white;
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+.font-display { font-family: "Great Vibes", cursive; }
+.font-body    { font-family: "Cormorant Garamond", Georgia, serif; }
+.font-cinzel  { font-family: "Cinzel", Georgia, serif; }
+
+/* ============================================================
+   SECTION LAYOUT
+   ============================================================ */
+.section-padding {
+  padding: 5rem 1.5rem;
+}
+@media (min-width: 768px) {
+  .section-padding { padding: 7rem 3rem; }
+}
+
+/* Light section title (on ivory/cream bg) */
+.section-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3.2rem, 10vw, 6rem);
+  line-height: 1.05;
+  font-weight: 400;
+  color: var(--forest);
+}
+
+/* Subtitle small-caps label */
+.section-subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Dark section title (on forest bg) */
+.section-title--dark {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3.2rem, 10vw, 6rem);
+  line-height: 1.05;
+  font-weight: 400;
+  color: var(--champagne-light);
+}
+
+/* ============================================================
+   PAPER / CREAM BACKGROUND TEXTURE
+   ============================================================ */
+.paper-bg {
+  background-color: #F2EDE3;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 400px 400px;
+}
+
+/* ============================================================
+   DARK FOREST SECTION
+   ============================================================ */
+.forest-bg {
+  background-color: var(--forest);
+}
+
+/* ============================================================
+   GOLD LINE ORNAMENT (thin horizontal divider)
+   ============================================================ */
+.gold-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.gold-line::before,
+.gold-line::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  max-width: 80px;
+  background: rgba(197,164,109,0.5);
+}
+.gold-line--dark::before,
+.gold-line--dark::after {
+  background: rgba(226,201,154,0.28);
+}
+
+/* ============================================================
+   CARD STYLES
+   ============================================================ */
+/* Light card (ivory/cream bg) */
+.card-light {
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(197,164,109,0.18);
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(4px);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+.card-light:hover {
+  box-shadow: var(--shadow-elegant);
+  transform: translateY(-2px);
+}
+
+/* White card on gold bg */
+.card-gold {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 32px -8px rgba(120,80,20,0.18);
+}
+
+/* Legacy aliases */
+.card-dark  { @apply card-gold; }
+.card-elegant { @apply card-light; }
+
+/* ============================================================
+   COUNTDOWN BOXES
+   ============================================================ */
+.countdown-box {
+  border: 1px solid rgba(197,164,109,0.38);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  min-width: 4rem;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(4px);
+}
+@media (min-width: 480px)  { .countdown-box { min-width: 5.5rem; padding: 1.5rem 1.25rem; } }
+@media (min-width: 640px)  { .countdown-box { min-width: 7rem;   padding: 1.75rem 1.5rem; } }
+
+/* ============================================================
+   GALLERY MARQUEE
+   ============================================================ */
+.marquee-track {
+  display: flex;
+  gap: 0.5rem;
+  width: max-content;
+  will-change: transform;
+}
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   BUTTON STYLES
+   ============================================================ */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.75rem;
+  background-color: var(--gold);
+  color: white;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-luxury);
+}
+.btn-gold:hover {
+  background-color: var(--gold-soft);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px -4px rgba(197,164,109,.4);
+}
+
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.75rem;
+  background-color: transparent;
+  color: var(--champagne-light);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  border: 1px solid rgba(241,235,218,0.5);
+  cursor: pointer;
+  transition: var(--transition-luxury);
+}
+.btn-outline-light:hover {
+  background-color: rgba(241,235,218,0.1);
+  border-color: rgba(241,235,218,0.85);
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2.25rem;
+  background-color: transparent;
+  color: var(--gold);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  border: 1px solid rgba(197,164,109,0.5);
+  cursor: pointer;
+  transition: var(--transition-luxury);
+}
+.btn-outline-gold:hover {
+  background-color: rgba(197,164,109,0.09);
+  border-color: var(--gold);
+}
+
+.btn-intro-enter {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.9rem 3rem;
+  background-color: transparent;
+  color: #7A6248;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  border: 1px solid rgba(197,164,109,0.5);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.btn-intro-enter:hover {
+  background-color: rgba(197,164,109,0.08);
+  border-color: rgba(197,164,109,0.9);
+  color: var(--gold);
+}
+
+/* ============================================================
+   FORM STYLES
+   ============================================================ */
+.form-input {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(197,164,109,0.3);
+  border-radius: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  color: var(--sage-dark);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  -webkit-appearance: none;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(197,164,109,.12);
+}
+.form-input::placeholder { color: rgba(106,87,68,0.42); }
+
+.form-label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--champagne-light);
+}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(197,164,109,0.4) 10%, rgba(197,164,109,0.4) 90%, transparent);
+  transform: translateX(-50%);
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar              { width: 5px; }
+::-webkit-scrollbar-track        { background: var(--ivory); }
+::-webkit-scrollbar-thumb        { background: rgba(197,164,109,0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover  { background: var(--gold); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ============================================================
+   LANG PILL
+   ============================================================ */
+.lang-pill {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.72rem;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+/* ============================================================
+   ARABIC (RTL) FONT OVERRIDES
+   ============================================================ */
+:root:lang(ar) body,
+:root:lang(ar) .font-body {
+  font-family: "Noto Naskh Arabic", "Amiri", serif;
+}
+:root:lang(ar) .section-title,
+:root:lang(ar) .section-title--dark,
+:root:lang(ar) .font-display {
+  font-family: "Amiri", serif;
+  font-size: clamp(2.4rem, 8vw, 5rem);
+  font-weight: 700;
+  font-style: normal;
+}
+:root:lang(ar) .font-cinzel {
+  font-family: "Noto Naskh Arabic", serif;
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}

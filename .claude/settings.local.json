@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:premiumelegante.thedigitalyes.com)",
+      "Bash(curl -s -L \"https://premiumelegante.thedigitalyes.com/\")",
+      "WebFetch(domain:www.thedigitalyes.com)",
+      "WebSearch",
+      "Bash(node -e \":*)",
+      "Bash(/c/Users/user/AppData/Local/Microsoft/WindowsApps/python --version)"
+    ]
+  }
+}
