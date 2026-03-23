@@ -46,30 +46,31 @@ export default function App() {
             )}
           </AnimatePresence>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: entered ? 1 : 0 }}
-            transition={{ duration: 0.6, delay: entered ? 0.1 : 0 }}
-            aria-hidden={!entered}
-          >
-            <LanguageSwitcher />
-            <MusicButton />
+          {entered && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <LanguageSwitcher />
+              <MusicButton />
 
-            <main id="main-content" ref={mainRef} tabIndex={-1} style={{ outline: "none" }}>
-              <Hero />
-              <Countdown />
-              <Welcome />
-              <Venue />
-              <Timeline />
-              <VenuePhoto />
-              <Gifts />
-              <div className="paper-bg py-4">
-                <GalleryMarquee strip="strip2" reverse />
-              </div>
-              <RSVP />
-              <Footer />
-            </main>
-          </motion.div>
+              <main id="main-content" ref={mainRef} tabIndex={-1} style={{ outline: "none" }}>
+                <Hero />
+                <Countdown />
+                <Welcome />
+                <Venue />
+                <Timeline />
+                <VenuePhoto />
+                <Gifts />
+                <div className="paper-bg py-4">
+                  <GalleryMarquee strip="strip2" reverse />
+                </div>
+                <RSVP />
+                <Footer />
+              </main>
+            </motion.div>
+          )}
         </div>
       </MusicProvider>
     </LanguageProvider>

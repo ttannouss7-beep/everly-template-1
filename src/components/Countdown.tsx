@@ -26,9 +26,8 @@ export default function Countdown() {
         {/* Script title */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
           className="section-title mb-3"
         >
           {c.title}
@@ -37,9 +36,8 @@ export default function Countdown() {
         {/* "UNTIL DATE" subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.42 }}
           className="font-cinzel text-gold mb-14 md:mb-16"
           style={{ fontSize: "0.75rem", letterSpacing: "0.35em" }}
         >
@@ -49,8 +47,8 @@ export default function Countdown() {
         {isPast ? (
           <motion.div
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             className="font-display text-forest text-4xl md:text-6xl"
             role="status" aria-live="polite"
           >
@@ -66,9 +64,8 @@ export default function Countdown() {
               <motion.div
                 key={unit.label}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
                 className="flex items-start"
               >
                 {/* Number + label */}

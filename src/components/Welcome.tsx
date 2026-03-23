@@ -16,9 +16,8 @@ export default function Welcome() {
         {/* Top gold ornament */}
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
-          whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.9, delay: 0.5 }}
           className="flex items-center gap-3 mb-10 max-w-xs mx-auto"
           aria-hidden="true"
         >
@@ -32,9 +31,8 @@ export default function Welcome() {
         {/* Pre-label */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="section-subtitle mb-5"
         >
           {lang === "ar" ? contentAR.couple.fullNames : content.couple.fullNames}
@@ -43,9 +41,8 @@ export default function Welcome() {
         {/* Section title */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.7 }}
           className="section-title mb-10"
         >
           {c.title}
@@ -58,8 +55,8 @@ export default function Welcome() {
               key={i}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 + i * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.05 + i * 0.1 }}
               className="font-body italic text-sage/80 text-lg md:text-xl leading-[1.85]"
             >
               {para}
@@ -71,8 +68,8 @@ export default function Welcome() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="flex items-center gap-3 my-9 max-w-xs mx-auto"
           aria-hidden="true"
         >
@@ -87,8 +84,8 @@ export default function Welcome() {
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.55 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.15 }}
           className="font-display text-gold"
           style={{ fontSize: "clamp(1.6rem, 5vw, 2.4rem)" }}
         >
@@ -99,8 +96,8 @@ export default function Welcome() {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.65 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 1, delay: 0.2 }}
           className="flex justify-center mt-10"
           aria-hidden="true"
         >
