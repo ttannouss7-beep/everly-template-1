@@ -13,13 +13,13 @@ export const content = {
   },
 
   // ── DATES ────────────────────────────────────────────────
-  weddingDate: new Date("2026-09-05T14:00:00"),   // ← Change this date
+  weddingDate: new Date("2026-06-06T17:30:00"),   // ← Change this date
   rsvpDeadline: "1 July 2026",
 
   // ── HERO SECTION ─────────────────────────────────────────
   hero: {
     preTitle: "We Are Getting Married",
-    date: "5 · IX · 2026",
+    date: "6 · VI · 2026",
     location: "Costantine & Helene, Kaslik",
     ctaLabel: "RSVP",
     // Path to your hero video (place in /public/video/hero.mp4)
@@ -69,31 +69,11 @@ export const content = {
     subtitle: "Events",
     events: [
       {
-        id: "ceremony",
-        title: "Wedding Ceremony",
-        date: "Saturday, 5 September 2026",
-        time: "2:30 PM",
-        location: "Costantine & Helene Church",
-        address: "Kaslik, Lebanon",
-        mapLink: "https://maps.google.com/?q=34.1830083,35.7767968",
-        description: "Please be seated by 2:15 PM",
-      },
-      {
-        id: "reception",
-        title: "Wedding Reception",
-        date: "Saturday, 5 September 2026",
-        time: "4:00 PM onwards",
-        location: "Costantine & Helene, Kaslik",
-        address: "Kaslik, Lebanon",
-        mapLink: "https://maps.google.com/?q=34.1830083,35.7767968",
-        description: "Cocktails, dinner and dancing",
-      },
-      {
         id: "groom-house",
         title: "Groom's House",
-        date: "Saturday, 5 September 2026",
+        date: "Saturday, 6 June 2026",
         time: "",
-        location: "Tannous Residence",
+        location: "Mattar Residence",
         address: "Kaslik, Lebanon",
         mapLink: "https://maps.google.com/?q=34.1830083,35.7767968",
         description: "Georges's family home",
@@ -101,12 +81,32 @@ export const content = {
       {
         id: "bride-house",
         title: "Bride's House",
-        date: "Saturday, 5 September 2026",
+        date: "Saturday, 6 June 2026",
         time: "",
-        location: "Bride's Residence",
+        location: "Fares Residence",
+        address: "Jounieh, Lebanon",
+        mapLink: "https://maps.google.com/?q=33.9808,35.6178",
+        description: "Rita's family home",
+      },
+      {
+        id: "ceremony",
+        title: "Wedding Ceremony",
+        date: "Saturday, 6 June 2026",
+        time: "5:30 PM",
+        location: "Costantine & Helene Church",
         address: "Kaslik, Lebanon",
         mapLink: "https://maps.google.com/?q=34.1830083,35.7767968",
-        description: "Rita's family home",
+        description: "Please be seated by 5:15 PM",
+      },
+      {
+        id: "reception",
+        title: "Wedding Reception",
+        date: "Saturday, 6 June 2026",
+        time: "7:30 PM onwards",
+        location: "Military Complex",
+        address: "Fiyadieh, Lebanon",
+        mapLink: "https://maps.google.com/?q=33.8547,35.5571",
+        description: "Cocktails, dinner and dancing",
       },
     ],
   },
@@ -114,30 +114,35 @@ export const content = {
   // ── DAY PROGRAMME / TIMELINE ──────────────────────────────
   timeline: {
     title: "Day Programme",
-    subtitle: "Saturday, 5 September 2026",
+    subtitle: "Saturday, 6 June 2026",
     items: [
       {
-        time: "14:00",
+        time: "17:15",
         label: "Arrival",
-        description: "Welcome drinks & canapés on the terrace",
+        description: "Guests arrive at Costantine & Helene Church",
       },
       {
-        time: "14:30",
+        time: "17:30",
         label: "Ceremony",
-        description: "Wedding ceremony in the chapel",
+        description: "Wedding ceremony at the church",
       },
       {
-        time: "16:00",
-        label: "Cocktail Hour",
-        description: "Champagne reception in the gardens",
-      },
-      {
-        time: "18:00",
-        label: "Dinner",
-        description: "Five-course wedding dinner in the ballroom",
+        time: "19:30",
+        label: "Reception",
+        description: "Arrival at Military Complex, Fiyadieh",
       },
       {
         time: "20:00",
+        label: "Cocktail Hour",
+        description: "Welcome drinks & canapés",
+      },
+      {
+        time: "21:00",
+        label: "Dinner",
+        description: "Wedding dinner & celebrations",
+      },
+      {
+        time: "22:30",
         label: "Cake Cutting",
         description: "Cut the cake & first dance",
       },
@@ -154,7 +159,7 @@ export const content = {
     quote:
       "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine.",
     attribution: "Maya Angelou",
-    image: "https://images.unsplash.com/photo-1550005809-91ad75fb315f?auto=format&fit=crop&w=1920&q=80",
+    image: "/images/gallery-2.jpg",
   },
 
   // ── INFORMAL EVENTS (gold background section) ─────────────
@@ -165,7 +170,7 @@ export const content = {
       {
         id: "rehearsal",
         title: "Welcome Dinner",
-        date: "Friday, 4 September 2026",
+        date: "Friday, 5 June 2026",
         time: "7:00 PM",
         location: "Costantine & Helene, Kaslik",
         address: "Kaslik, Lebanon",
@@ -174,7 +179,7 @@ export const content = {
       {
         id: "brunch",
         title: "Farewell Brunch",
-        date: "Sunday, 6 September 2026",
+        date: "Sunday, 7 June 2026",
         time: "11:00 AM",
         location: "Costantine & Helene, Kaslik",
         address: "Kaslik, Lebanon",
@@ -249,48 +254,16 @@ export const content = {
   // Replace with your own photo paths: /images/gallery-1.jpg etc.
   gallery: {
     strip1: [
-      {
-        src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=480&h=680&q=80",
-        alt: "Couple portrait",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=480&h=680&q=80",
-        alt: "Wedding ceremony",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=480&h=680&q=80",
-        alt: "Reception",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=480&h=680&q=80",
-        alt: "Wedding flowers",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=480&h=680&q=80",
-        alt: "Outdoor ceremony",
-      },
+      { src: "/images/gallery-1.jpg", alt: "Georges & Rita" },
+      { src: "/images/gallery-2.jpg", alt: "Georges & Rita" },
+      { src: "/images/gallery-3.jpg", alt: "Georges & Rita" },
+      { src: "/images/gallery-4.jpg", alt: "Georges & Rita" },
     ],
     strip2: [
-      {
-        src: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=480&h=680&q=80",
-        alt: "Wedding rings",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?auto=format&fit=crop&w=480&h=680&q=80",
-        alt: "Bride portrait",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=480&h=680&q=80",
-        alt: "Wedding table",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1478146059778-26028b07395a?auto=format&fit=crop&w=480&h=680&q=80",
-        alt: "First dance",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1550005809-91ad75fb315f?auto=format&fit=crop&w=480&h=680&q=80",
-        alt: "Venue",
-      },
+      { src: "/images/gallery-5.jpg", alt: "Georges & Rita" },
+      { src: "/images/gallery-6.jpg", alt: "Georges & Rita" },
+      { src: "/images/gallery-7.jpg", alt: "Georges & Rita" },
+      { src: "/images/gallery-8.jpg", alt: "Georges & Rita" },
     ],
   },
 
@@ -341,8 +314,8 @@ export const content = {
     accounts: [
       {
         bank: "Caixabank",
-        name: "Andrea Morales",
-        iban: "ES00 0000 0000 0000 0000 0000",
+        name: "Georges Mattar",
+        iban: "96171369673",
         bic: "XXXXXXXXXX",
       },
     ],
@@ -351,7 +324,7 @@ export const content = {
   // ── FOOTER ───────────────────────────────────────────────
   footer: {
     tagline: "Together forever",
-    date: "5 September 2026",
+    date: "6 June 2026",
     location: "Costantine & Helene, Kaslik",
   },
 
@@ -374,85 +347,140 @@ export const contentAR = {
     fullNames: "جورج وريتا",
   },
   hero: {
-    preTitle: "نحن نتزوج",
-    date: "5 · IX · 2026",
-    location: "كنيسة مار إيليا، الميفوق",
-    ctaLabel: "تأكيد الحضور",
+    preTitle: "زواجنا المبارك",
+    date: "٦ · حزيران · ٢٠٢٦",
+    location: "كنيسة القدّيسَين قسطنطين وهيلانة، الكسليك",
+    ctaLabel: "تثبيت الحضور",
   },
   intro: {
-    preTitle: "يشرّفنا دعوتكم",
-    subtitle: "لحضور زفاف",
-    ctaLabel: "ادخل",
+    preTitle: "يتشرّف العروسان بدعوتكم",
+    subtitle: "لحضور مراسم زفاف",
+    ctaLabel: "الدخول",
   },
   countdown: {
-    title: "العد التنازلي",
-    subtitle: "حتى يبدأ الأبد",
-    labels: { days: "أيام", hours: "ساعات", minutes: "دقائق", seconds: "ثوانٍ" },
+    title: "العدّ التنازلي ليومنا الكبير",
+    subtitle: "موعدنا يقترب... نلتقي قريبًا",
+    labels: { days: "يوم", hours: "ساعة", minutes: "دقيقة", seconds: "ثانية" },
   },
   welcome: {
-    title: "أهلاً بكم",
+    title: "أهلاً وسهلاً بكم",
     body: [
-      "يسعدنا مشاركة هذا اليوم المميز مع أعز الناس إلى قلوبنا.",
-      "نتشرف برفقة عائلتينا بدعوتكم للاحتفال بزواجنا وبداية حياتنا المشتركة.",
-      "شكراً لكونكم جزءاً من قصتنا.",
+      "يسرّنا ويشرّفنا أن نتقاسم فرحة هذا اليوم المبارك مع أغلى الناس على قلبنا.",
+      "برفقة عائلتَينا، ندعوكم للاحتفال معنا ببداية مسيرة حياتنا المشتركة وعهد الحبّ الأبدي.",
+      "شكرًا لأنّكم جزءٌ لا يتجزّأ من قصّتنا.",
     ],
-    signature: "بكل محبة، شربل وجويل",
+    signature: "بكلّ محبّة، جورج وريتا",
   },
   venue: {
     title: "حفل الزفاف",
-    subtitle: "المناسبات",
+    subtitle: "تفاصيل المناسبات",
+    events: [
+      {
+        id: "groom-house",
+        title: "منزل العريس",
+        date: "السبت، ٦ حزيران ٢٠٢٦",
+        time: "",
+        location: "منزل عائلة مطر",
+        address: "الكسليك، لبنان",
+        mapLink: "https://maps.google.com/?q=34.1830083,35.7767968",
+        description: "منزل عائلة جورج",
+      },
+      {
+        id: "bride-house",
+        title: "منزل العروس",
+        date: "السبت، ٦ حزيران ٢٠٢٦",
+        time: "",
+        location: "منزل عائلة فارس",
+        address: "جونيه، لبنان",
+        mapLink: "https://maps.google.com/?q=33.9808,35.6178",
+        description: "منزل عائلة ريتا",
+      },
+      {
+        id: "ceremony",
+        title: "مراسم الإكليل",
+        date: "السبت، ٦ حزيران ٢٠٢٦",
+        time: "٥:٣٠ مساءً",
+        location: "كنيسة القدّيسَين قسطنطين وهيلانة",
+        address: "الكسليك، لبنان",
+        mapLink: "https://maps.google.com/?q=34.1830083,35.7767968",
+        description: "نرجو التواجد قبل الساعة ٥:١٥ مساءً",
+      },
+      {
+        id: "reception",
+        title: "حفل الاستقبال",
+        date: "السبت، ٦ حزيران ٢٠٢٦",
+        time: "٧:٣٠ مساءً وما بعدها",
+        location: "المجمّع العسكري",
+        address: "الفياضيّة، لبنان",
+        mapLink: "https://maps.google.com/?q=33.8547,35.5571",
+        description: "كوكتيل وعشاء ورقص",
+      },
+    ],
   },
   timeline: {
     title: "برنامج اليوم",
-    subtitle: "السبت، ٥ سبتمبر ٢٠٢٦",
+    subtitle: "السبت، ٦ حزيران ٢٠٢٦",
+    items: [
+      { time: "١٧:١٥", label: "الوصول", description: "وصول المدعوّين إلى الكنيسة" },
+      { time: "١٧:٣٠", label: "مراسم الإكليل", description: "مراسم الزواج في الكنيسة" },
+      { time: "١٩:٣٠", label: "الاستقبال", description: "الوصول إلى المجمّع العسكري، الفياضيّة" },
+      { time: "٢٠:٠٠", label: "الكوكتيل", description: "مشروبات ومقبّلات ترحيبيّة" },
+      { time: "٢١:٠٠", label: "العشاء", description: "عشاء الزفاف والاحتفال" },
+      { time: "٢٢:٣٠", label: "قطع الكعكة", description: "قطع كعكة الزفاف والرقصة الأولى" },
+      { time: "٠٠:٠٠", label: "نهاية السهرة", description: "انتهاء الحفل — عودة آمنة إلى المنازل" },
+    ],
   },
   informalEvents: {
-    title: "تعالوا نلتقي",
-    subtitle: "فعاليات ما قبل وما بعد الزفاف",
+    title: "نورونا بطلّتكم",
+    subtitle: "مناسبات ما قبل الزفاف وما بعده",
   },
   location: {
-    title: "كيفية الوصول",
+    title: "كيفيّة الوصول",
   },
   accommodation: {
     title: "أماكن الإقامة",
-    subtitle: "حصلنا على أسعار مميزة في الأماكن التالية",
+    subtitle: "وفّرنا لكم أسعارًا مميّزة في الأماكن التالية",
   },
   rsvp: {
-    title: "تأكيد الحضور",
-    subtitle: "يرجى تأكيد حضوركم",
-    deadline: "قبل ١ يوليو ٢٠٢٦",
+    title: "تثبيت الحضور",
+    subtitle: "نرجو تأكيد حضوركم الكريم",
+    deadline: "في موعدٍ أقصاه ١ تمّوز ٢٠٢٦",
     fields: {
       attending: {
-        label: "هل ستحضرون؟",
-        yes: "نعم، بكل سرور",
-        no: "آسف، لن أتمكن",
+        label: "هل ستُشرّفوننا بحضوركم؟",
+        yes: "بكلّ فرح وسرور",
+        no: "مع الأسف، لن أتمكّن من الحضور",
       },
-      name: { label: "الاسم الكامل", placeholder: "اسمك الكامل" },
-      email: { label: "البريد الإلكتروني", placeholder: "بريدك@example.com" },
-      guestCount: { label: "عدد الحضور (شاملاً نفسك)" },
+      name: { label: "الاسم الكامل", placeholder: "الاسم الثلاثي" },
+      email: { label: "البريد الإلكتروني", placeholder: "example@email.com" },
+      guestCount: { label: "عدد المدعوّين (بما فيهم حضرتكم)" },
       dietary: {
-        label: "المتطلبات الغذائية",
-        placeholder: "نباتي، حساسية للطعام...",
+        label: "ملاحظات غذائيّة",
+        placeholder: "نباتي، حساسيّة تجاه أطعمة معيّنة...",
       },
-      children: { label: "هل سيحضر أطفال؟", yes: "نعم", no: "لا" },
+      children: { label: "هل سيرافقكم أطفال؟", yes: "نعم", no: "لا" },
       message: {
-        label: "رسالة للعروسين",
-        placeholder: "شاركونا تمنياتكم...",
+        label: "كلمة للعروسَين",
+        placeholder: "شاركونا أجمل تمنّياتكم...",
       },
       submit: "تأكيد الحضور",
     },
     successMessage: {
-      title: "شكراً لكم!",
-      body: "تم استلام تأكيد حضوركم. لا يسعدنا الانتظار للاحتفال معكم!",
+      title: "شكرًا جزيلاً!",
+      body: "وصلنا تأكيد حضوركم بنجاح. يسعدنا اللقاء بكم في هذا اليوم المبارك!",
     },
     declineMessage: {
-      title: "سنفتقدكم!",
-      body: "شكراً لإعلامنا. نأمل أن نحتفل معكم في مناسبة أخرى.",
+      title: "سنفتقدكم كثيرًا!",
+      body: "نشكركم على إعلامنا. نتمنّى أن تجمعنا مناسبة سعيدة أخرى قريبًا.",
     },
   },
+  gifts: {
+    title: "الهدايا",
+    subtitle: "حضوركم هو أغلى هديّة. إذا رغبتم بتقديم هديّة، تجدون أدناه المعلومات اللازمة:",
+  },
   footer: {
-    tagline: "معاً إلى الأبد",
-    date: "٥ سبتمبر ٢٠٢٦",
-    location: "كنيسة مار إيليا، الميفوق",
+    tagline: "معًا إلى الأبد",
+    date: "٦ حزيران ٢٠٢٦",
+    location: "كنيسة القدّيسَين قسطنطين وهيلانة، الكسليك",
   },
 } as const;

@@ -36,7 +36,7 @@ export default function Venue() {
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 text-left">
-          {("events" in c ? c.events : content.venue.events).map((event: typeof content.venue.events[number], i: number) => (
+          {("events" in c ? c.events : content.venue.events).map((event: { id: string; title: string; date: string; time: string; location: string; address: string; mapLink: string; description: string }, i: number) => (
             <motion.div
               key={event.id}
               initial={{ opacity: 0, y: 24 }}
@@ -71,7 +71,7 @@ export default function Venue() {
                   aria-label={`View ${event.location} on map`}
                 >
                   <PinIcon />
-                  {lang === "ar" ? "الموقع" : "Location"}
+                  {lang === "ar" ? "عرض الموقع" : "Location"}
                 </a>
               </div>
             </motion.div>

@@ -1,4 +1,4 @@
-// React imported via JSX transform
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { content } from "@/content/content";
 
@@ -10,8 +10,34 @@ interface Props {
 
 export default function GalleryMarquee({ strip = "strip1", reverse = false, className = "" }: Props) {
   const images = content.gallery[strip];
-  // Duplicate for seamless loop
   const doubled = [...images, ...images];
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setPaused(true);
+    setStartX(e.pageX - (scrollRef.current?.offsetLeft ?? 0));
+    setScrollLeft(scrollRef.current?.scrollLeft ?? 0);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    scrollRef.current.scrollLeft = scrollLeft - (x - startX);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    setPaused(false);
+  };
+
+  const handleTouchStart = () => setPaused(true);
+  const handleTouchEnd = () => setPaused(false);
 
   return (
     <motion.div
@@ -23,19 +49,24 @@ export default function GalleryMarquee({ strip = "strip1", reverse = false, clas
       aria-label="Wedding photo gallery"
     >
       <div
-        className="marquee-wrapper flex gap-3"
-        style={{ cursor: "default" }}
-        onMouseEnter={(e) => {
-          const track = e.currentTarget.querySelector<HTMLElement>(".marquee-track");
-          if (track) track.style.animationPlayState = "paused";
+        ref={scrollRef}
+        className="flex gap-3 overflow-x-auto scrollbar-hide"
+        style={{
+          cursor: isDragging ? "grabbing" : "grab",
+          WebkitOverflowScrolling: "touch",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
         }}
-        onMouseLeave={(e) => {
-          const track = e.currentTarget.querySelector<HTMLElement>(".marquee-track");
-          if (track) track.style.animationPlayState = "running";
-        }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         <div
-          className={`marquee-track ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
+          className={`flex gap-3 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
+          style={{ animationPlayState: paused ? "paused" : "running" }}
         >
           {doubled.map((img, i) => (
             <div
@@ -50,7 +81,7 @@ export default function GalleryMarquee({ strip = "strip1", reverse = false, clas
                 height={340}
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                className="w-full h-full object-cover pointer-events-none"
                 draggable={false}
               />
             </div>

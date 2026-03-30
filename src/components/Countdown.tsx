@@ -50,7 +50,7 @@ export default function Countdown() {
             className="font-display text-forest text-4xl md:text-6xl"
             role="status" aria-live="polite"
           >
-            {lang === "ar" ? "!اليوم هو اليوم" : "Today is the day!"}
+            {lang === "ar" ? "اليوم هو اليوم المنتظر!" : "Today is the day!"}
           </motion.div>
         ) : (
           <div

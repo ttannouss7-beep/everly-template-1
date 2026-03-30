@@ -45,7 +45,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-end text-center px-6 pb-16 h-full">
+      <div className="relative z-10 flex flex-col items-center justify-end text-center px-6 pb-8 h-full">
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -62,7 +62,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
           className="font-display text-white leading-[0.88]"
-          style={{ fontSize: "clamp(4rem, 17vw, 10.5rem)" }}
+          style={{ fontSize: "clamp(3.2rem, 14vw, 8rem)" }}
         >
           <span className="block">
             {lang === "ar" ? contentAR.couple.groom : content.couple.groom}

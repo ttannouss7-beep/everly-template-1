@@ -84,7 +84,7 @@ export default function Gifts() {
 
               {/* Account name label */}
               <span className="font-body text-xs tracking-[0.22em] uppercase text-gold mb-2 block">
-                {lang === "ar" ? "اسم الحساب" : "Account Name"}
+                {lang === "ar" ? "صاحب الحساب" : "Account Name"}
               </span>
 
               {/* Account holder */}
@@ -101,7 +101,7 @@ export default function Gifts() {
                   <span className="font-body text-xs tracking-[0.18em] uppercase text-gold/70 flex-shrink-0" style={{ width: "10rem" }}>
                     {lang === "ar" ? "رقم الحساب" : "Account Number"}
                   </span>
-                  <span className="font-body text-forest/80 text-sm tracking-wider break-all">
+                  <span className="font-body text-forest font-semibold text-lg tracking-wider break-all">
                     {account.iban}
                   </span>
                 </div>

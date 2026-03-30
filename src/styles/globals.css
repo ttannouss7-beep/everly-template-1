@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
 /* ============================================================
    CSS CUSTOM PROPERTIES
    ============================================================ */
@@ -187,19 +189,16 @@ body {
    ============================================================ */
 :root:lang(ar) body,
 :root:lang(ar) .font-body {
-  font-family: "Noto Naskh Arabic", "Amiri", serif;
+  font-family: "Amiri", "Noto Naskh Arabic", serif;
 }
 :root:lang(ar) .section-title,
-:root:lang(ar) .section-title--dark,
 :root:lang(ar) .font-display {
   font-family: "Amiri", serif;
-  font-size: clamp(2.4rem, 8vw, 5rem);
-  font-weight: 700;
   font-style: normal;
 }
 :root:lang(ar) .font-cinzel {
-  font-family: "Noto Naskh Arabic", serif;
-  letter-spacing: 0;
+  font-family: "Amiri", "Noto Naskh Arabic", serif;
+  letter-spacing: 0.1em;
 }
 
 /* ============================================================

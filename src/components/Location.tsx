@@ -78,7 +78,7 @@ export default function Location() {
               aria-label="View venue on Google Maps"
             >
               <MapPinIcon className="w-3.5 h-3.5" />
-              {lang === "ar" ? "عرض على الخريطة" : "View on Map"}
+              {lang === "ar" ? "فتح الخريطة" : "View on Map"}
             </a>
           </motion.div>
         </div>

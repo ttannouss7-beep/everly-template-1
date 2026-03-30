@@ -232,7 +232,9 @@ export default function RSVP() {
                     {form.guests.map((guest, i) => (
                       <div key={i} className="space-y-3">
                         <p className="font-cinzel text-gold/65" style={{ fontSize: "0.72rem", letterSpacing: "0.24em" }}>
-                          {i === 0 ? "PERSON 1 (MAIN CONTACT)" : `PERSON ${i + 1}`}
+                          {i === 0
+                            ? (lang === "ar" ? "الشخص ١ (جهة الاتّصال الرئيسيّة)" : "PERSON 1 (MAIN CONTACT)")
+                            : (lang === "ar" ? `الشخص ${i + 1}` : `PERSON ${i + 1}`)}
                         </p>
                         <label htmlFor={`guest-name-${i}`} className="sr-only">{c.fields.name.label} {i + 1}</label>
                         <input id={`guest-name-${i}`} type="text" required value={guest.name} onChange={(e) => updateGuest(i, "name", e.target.value)} placeholder={c.fields.name.placeholder} className="w-full px-4 py-3 rounded-xl border border-sage/20 font-body text-sage-dark placeholder:text-sage/40 focus:outline-none focus:border-gold transition-colors text-base" autoComplete="off" />
@@ -287,7 +289,7 @@ export default function RSVP() {
 
               {isError && (
                 <p role="alert" className="text-red-600 text-sm font-body text-center">
-                  Something went wrong. Please try again or contact us directly.
+                  {lang === "ar" ? "حدث خطأ ما. يرجى المحاولة مجدّدًا أو التواصل معنا مباشرةً." : "Something went wrong. Please try again or contact us directly."}
                 </p>
               )}
 
@@ -298,7 +300,7 @@ export default function RSVP() {
                 style={{ fontSize: "0.75rem", letterSpacing: "0.32em" }}
                 aria-busy={isSubmitting}
               >
-                {isSubmitting ? "SENDING…" : c.fields.submit.toUpperCase()}
+                {isSubmitting ? (lang === "ar" ? "جارٍ الإرسال..." : "SENDING…") : c.fields.submit.toUpperCase()}
               </button>
             </motion.form>
           ) : (

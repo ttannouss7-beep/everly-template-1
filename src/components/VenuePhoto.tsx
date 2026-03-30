@@ -17,7 +17,7 @@ export default function VenuePhoto() {
       {/* Gradient overlay — forest-tinted */}
       <div
         className="absolute inset-0"
-        style={{ background: "linear-gradient(to bottom, rgba(18,36,36,0.55) 0%, rgba(18,36,36,0.45) 50%, rgba(18,36,36,0.65) 100%)" }}
+        style={{ background: "linear-gradient(to bottom, rgba(18,36,36,0.70) 0%, rgba(18,36,36,0.60) 50%, rgba(18,36,36,0.75) 100%)" }}
         aria-hidden="true"
       />
 

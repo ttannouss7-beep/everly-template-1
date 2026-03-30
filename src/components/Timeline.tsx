@@ -61,7 +61,7 @@ export default function Timeline() {
           />
 
           <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            {content.timeline.items.map((item, i) => (
+            {("items" in c ? c.items : content.timeline.items).map((item: { time: string; label: string; description: string }, i: number) => (
               <motion.div
                 key={item.time}
                 initial={{ opacity: 0, x: -12 }}
