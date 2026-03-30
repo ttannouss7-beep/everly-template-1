@@ -6,13 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "start": "vite preview",
+    "start": "node server.js",
     "preview": "vite preview",
     "screenshot": "node scripts/screenshot.mjs",
     "lint:css": "stylelint \"src/**/*.css\""
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "compression": "^1.8.1",
+    "express": "^5.2.1",
     "framer-motion": "^11.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
@@ -25,6 +27,7 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "puppeteer-core": "^24.39.1",
+    "sharp": "^0.34.5",
     "stylelint": "^17.4.0",
     "stylelint-config-standard": "^40.0.0",
     "tailwindcss": "^3.4.4",
