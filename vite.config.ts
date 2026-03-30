@@ -9,6 +9,10 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  preview: {
+    port: parseInt(process.env.PORT || "8080"),
+    host: "0.0.0.0",
+  },
   build: {
     target: "es2020",
     outDir: "dist",
