@@ -10,6 +10,7 @@ export default defineConfig({
     },
   },
   build: {
+    target: "es2020",
     outDir: "dist",
     assetsDir: "assets",
     rollupOptions: {
@@ -17,6 +18,7 @@ export default defineConfig({
         manualChunks: {
           vendor: ["react", "react-dom"],
           motion: ["framer-motion"],
+          emailjs: ["@emailjs/browser"],
         },
       },
     },

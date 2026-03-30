@@ -32,8 +32,6 @@
 /* ============================================================
    BASE RESET & DEFAULTS
    ============================================================ */
-*, *::before, *::after { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
@@ -96,15 +94,6 @@ body {
   color: var(--gold);
 }
 
-/* Dark section title (on forest bg) */
-.section-title--dark {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(3.2rem, 10vw, 6rem);
-  line-height: 1.05;
-  font-weight: 400;
-  color: var(--champagne-light);
-}
-
 /* ============================================================
    PAPER / CREAM BACKGROUND TEXTURE
    ============================================================ */
@@ -119,28 +108,6 @@ body {
    ============================================================ */
 .forest-bg {
   background-color: var(--forest);
-}
-
-/* ============================================================
-   GOLD LINE ORNAMENT (thin horizontal divider)
-   ============================================================ */
-.gold-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-.gold-line::before,
-.gold-line::after {
-  content: "";
-  height: 1px;
-  flex: 1;
-  max-width: 80px;
-  background: rgba(197,164,109,0.5);
-}
-.gold-line--dark::before,
-.gold-line--dark::after {
-  background: rgba(226,201,154,0.28);
 }
 
 /* ============================================================
@@ -168,24 +135,6 @@ body {
   box-shadow: 0 8px 32px -8px rgba(120,80,20,0.18);
 }
 
-/* Legacy aliases */
-.card-dark  { @apply card-gold; }
-.card-elegant { @apply card-light; }
-
-/* ============================================================
-   COUNTDOWN BOXES
-   ============================================================ */
-.countdown-box {
-  border: 1px solid rgba(197,164,109,0.38);
-  padding: 1.25rem 1rem;
-  text-align: center;
-  min-width: 4rem;
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(4px);
-}
-@media (min-width: 480px)  { .countdown-box { min-width: 5.5rem; padding: 1.5rem 1.25rem; } }
-@media (min-width: 640px)  { .countdown-box { min-width: 7rem;   padding: 1.75rem 1.5rem; } }
-
 /* ============================================================
    GALLERY MARQUEE
    ============================================================ */
@@ -202,49 +151,6 @@ body {
 /* ============================================================
    BUTTON STYLES
    ============================================================ */
-.btn-gold {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 2.75rem;
-  background-color: var(--gold);
-  color: white;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  transition: var(--transition-luxury);
-}
-.btn-gold:hover {
-  background-color: var(--gold-soft);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 24px -4px rgba(197,164,109,.4);
-}
-
-.btn-outline-light {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 2.75rem;
-  background-color: transparent;
-  color: var(--champagne-light);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  border: 1px solid rgba(241,235,218,0.5);
-  cursor: pointer;
-  transition: var(--transition-luxury);
-}
-.btn-outline-light:hover {
-  background-color: rgba(241,235,218,0.1);
-  border-color: rgba(241,235,218,0.85);
-}
-
 .btn-outline-gold {
   display: inline-flex;
   align-items: center;
@@ -266,72 +172,6 @@ body {
   border-color: var(--gold);
 }
 
-.btn-intro-enter {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.9rem 3rem;
-  background-color: transparent;
-  color: #7A6248;
-  font-family: "Cinzel", Georgia, serif;
-  font-size: 0.64rem;
-  font-weight: 500;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  border: 1px solid rgba(197,164,109,0.5);
-  cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.btn-intro-enter:hover {
-  background-color: rgba(197,164,109,0.08);
-  border-color: rgba(197,164,109,0.9);
-  color: var(--gold);
-}
-
-/* ============================================================
-   FORM STYLES
-   ============================================================ */
-.form-input {
-  width: 100%;
-  padding: 0.875rem 1.25rem;
-  background: rgba(255,255,255,0.92);
-  border: 1px solid rgba(197,164,109,0.3);
-  border-radius: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.05rem;
-  color: var(--sage-dark);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  -webkit-appearance: none;
-}
-.form-input:focus {
-  outline: none;
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(197,164,109,.12);
-}
-.form-input::placeholder { color: rgba(106,87,68,0.42); }
-
-.form-label {
-  display: block;
-  margin-bottom: 0.375rem;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--champagne-light);
-}
-
-/* ============================================================
-   TIMELINE
-   ============================================================ */
-.timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0; bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(197,164,109,0.4) 10%, rgba(197,164,109,0.4) 90%, transparent);
-  transform: translateX(-50%);
-}
-
 /* ============================================================
    SCROLLBAR
    ============================================================ */
@@ -341,19 +181,6 @@ body {
 ::-webkit-scrollbar-thumb:hover  { background: var(--gold); }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-/* ============================================================
-   LANG PILL
-   ============================================================ */
-.lang-pill {
-  padding: 0.25rem 0.75rem;
-  font-size: 0.72rem;
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  transition: var(--transition-smooth);
-  cursor: pointer;
-}
 
 /* ============================================================
    ARABIC (RTL) FONT OVERRIDES

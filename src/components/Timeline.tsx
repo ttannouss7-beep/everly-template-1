@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
-import { content } from "@/content/content";
-import { contentAR } from "@/content/content";
-import { useLang } from "@/context/LanguageContext";
+import { useContent } from "@/hooks/useContent";
 import { WeddingCake } from "./Illustrations";
 
 export default function Timeline() {
-  const { lang } = useLang();
+  const { content, contentAR, lang } = useContent();
   const c = lang === "ar" ? contentAR.timeline : content.timeline;
 
   return (

@@ -1,32 +1,36 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { MusicProvider } from "@/context/MusicContext";
 
-// Fixed UI
 import IntroScreen from "@/components/IntroScreen";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import MusicButton from "@/components/MusicButton";
 
-// Page sections
 import Hero from "@/components/Hero";
 import Countdown from "@/components/Countdown";
 import Welcome from "@/components/Welcome";
 import Venue from "@/components/Venue";
-import Timeline from "@/components/Timeline";
-import VenuePhoto from "@/components/VenuePhoto";
-import Gifts from "@/components/Gifts";
+
+const Timeline = lazy(() => import("@/components/Timeline"));
+const VenuePhoto = lazy(() => import("@/components/VenuePhoto"));
+const Gifts = lazy(() => import("@/components/Gifts"));
 import GalleryMarquee from "@/components/GalleryMarquee";
-import RSVP from "@/components/RSVP";
-import Footer from "@/components/Footer";
+const RSVP = lazy(() => import("@/components/RSVP"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 export default function App() {
   const [entered, setEntered] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
 
+  useEffect(() => {
+    if (!entered) return;
+    const id = setTimeout(() => mainRef.current?.focus(), 950);
+    return () => clearTimeout(id);
+  }, [entered]);
+
   const handleEnter = () => {
     setEntered(true);
-    setTimeout(() => mainRef.current?.focus(), 950);
   };
 
   return (
@@ -60,14 +64,16 @@ export default function App() {
                 <Countdown />
                 <Welcome />
                 <Venue />
-                <Timeline />
-                <VenuePhoto />
-                <Gifts />
-                <div className="paper-bg py-4">
-                  <GalleryMarquee strip="strip2" reverse />
-                </div>
-                <RSVP />
-                <Footer />
+                <Suspense fallback={null}>
+                  <Timeline />
+                  <VenuePhoto />
+                  <Gifts />
+                  <div className="paper-bg py-4">
+                    <GalleryMarquee strip="strip2" reverse />
+                  </div>
+                  <RSVP />
+                  <Footer />
+                </Suspense>
               </main>
             </motion.div>
           )}

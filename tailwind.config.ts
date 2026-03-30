@@ -36,22 +36,6 @@ const config: Config = {
           "0%":   { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0)" },
         },
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%":      { transform: "translateY(-10px)" },
-        },
-        fadeUp: {
-          "0%":   { opacity: "0", transform: "translateY(24px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        fadeIn: {
-          "0%":   { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        shimmer: {
-          "0%":   { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
         pulse: {
           "0%, 100%": { opacity: "1" },
           "50%":      { opacity: "0.5" },
@@ -60,12 +44,6 @@ const config: Config = {
       animation: {
         marquee:           "marquee 35s linear infinite",
         "marquee-reverse": "marquee-reverse 35s linear infinite",
-        "marquee-slow":    "marquee 50s linear infinite",
-        float:             "float 4s ease-in-out infinite",
-        "float-delayed":   "float 4s ease-in-out 2s infinite",
-        fadeUp:            "fadeUp 0.8s ease-out forwards",
-        fadeIn:            "fadeIn 0.6s ease-out forwards",
-        shimmer:           "shimmer 2s linear infinite",
       },
       boxShadow: {
         soft:    "0 2px 15px -3px rgba(27,47,47,.12), 0 4px 6px -2px rgba(27,47,47,.06)",

@@ -1,11 +1,9 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { content } from "@/content/content";
-import { contentAR } from "@/content/content";
-import { useLang } from "@/context/LanguageContext";
+import { useContent } from "@/hooks/useContent";
 
 export default function Hero() {
-  const { lang } = useLang();
+  const { content, contentAR, lang } = useContent();
   const videoRef = useRef<HTMLVideoElement>(null);
   const c = lang === "ar" ? contentAR.hero : content.hero;
 
@@ -47,7 +45,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6">
+      <div className="relative z-10 flex flex-col items-center justify-end text-center px-6 pb-16 h-full">
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -59,42 +57,43 @@ export default function Hero() {
           {c.preTitle}
         </motion.p>
 
-        <motion.span
+        <motion.h1
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="font-display text-white block leading-[0.88]"
+          className="font-display text-white leading-[0.88]"
           style={{ fontSize: "clamp(4rem, 17vw, 10.5rem)" }}
         >
-          {lang === "ar" ? contentAR.couple.groom : content.couple.groom}
-        </motion.span>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex items-center gap-4 my-4 md:my-5"
-          aria-hidden="true"
-        >
-          <div className="h-px w-12 md:w-20 bg-gold/45" />
-          <span
-            className="font-body italic text-gold/75"
-            style={{ fontSize: "clamp(1rem, 3vw, 1.6rem)", letterSpacing: "0.4em" }}
-          >
-            &amp;
+          <span className="block">
+            {lang === "ar" ? contentAR.couple.groom : content.couple.groom}
           </span>
-          <div className="h-px w-12 md:w-20 bg-gold/45" />
-        </motion.div>
 
-        <motion.span
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.55 }}
-          className="font-display text-white block leading-[0.88]"
-          style={{ fontSize: "clamp(4rem, 17vw, 10.5rem)" }}
-        >
-          {lang === "ar" ? contentAR.couple.bride : content.couple.bride}
-        </motion.span>
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="flex items-center justify-center gap-4 my-4 md:my-5"
+            aria-hidden="true"
+          >
+            <span className="h-px w-12 md:w-20 bg-gold/45 block" />
+            <span
+              className="font-body italic text-gold/75"
+              style={{ fontSize: "clamp(1rem, 3vw, 1.6rem)", letterSpacing: "0.4em" }}
+            >
+              &amp;
+            </span>
+            <span className="h-px w-12 md:w-20 bg-gold/45 block" />
+          </motion.span>
+
+          <motion.span
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.55 }}
+            className="block"
+          >
+            {lang === "ar" ? contentAR.couple.bride : content.couple.bride}
+          </motion.span>
+        </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}

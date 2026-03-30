@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
-import { content } from "@/content/content";
-import { contentAR } from "@/content/content";
-import { useLang } from "@/context/LanguageContext";
+import { useContent } from "@/hooks/useContent";
 
 export default function Footer() {
-  const { lang } = useLang();
+  const { content, contentAR, lang } = useContent();
   const c = lang === "ar" ? contentAR.footer : content.footer;
   const groom = lang === "ar" ? contentAR.couple.groom : content.couple.groom;
   const bride = lang === "ar" ? contentAR.couple.bride : content.couple.bride;

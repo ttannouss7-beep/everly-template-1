@@ -4,34 +4,47 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Elsa & Elie — Wedding Invitation · 5 September 2026 · St Elige, Mayfouk" />
+    <meta name="description" content="Georges & Rita — Wedding Invitation · 5 September 2026 · Costantine &amp; Helene, Kaslik" />
     <meta name="theme-color" content="#F8F5EF" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://cdn.prod.website-files.com; connect-src 'self' https://api.emailjs.com;" />
 
     <!-- Open Graph / Social sharing -->
     <meta property="og:type"        content="website" />
-    <meta property="og:title"       content="Elsa &amp; Elie — Wedding · 5 September 2026" />
-    <meta property="og:description" content="You are cordially invited to the wedding of Elsa &amp; Elie · St Elige, Mayfouk · 5 September 2026" />
+    <meta property="og:title"       content="Georges &amp; Rita — Wedding · 5 September 2026" />
+    <meta property="og:description" content="You are cordially invited to the wedding of Georges &amp; Rita · Costantine &amp; Helene, Kaslik · 5 September 2026" />
     <meta property="og:image"       content="/images/hero.jpg" />
     <meta property="og:image:width"  content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card"        content="summary_large_image" />
-    <meta name="twitter:title"       content="Elsa &amp; Elie — Wedding · 5 September 2026" />
-    <meta name="twitter:description" content="You are cordially invited · St Elige, Mayfouk · 5 September 2026" />
+    <meta name="twitter:title"       content="Georges &amp; Rita — Wedding · 5 September 2026" />
+    <meta name="twitter:description" content="You are cordially invited · Costantine &amp; Helene, Kaslik · 5 September 2026" />
     <meta name="twitter:image"       content="/images/hero.jpg" />
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Google Fonts: Great Vibes (script) + Cormorant Garamond (serif body) -->
+    <!-- Critical fonts (render-blocking) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;1,400;0,600&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;1,400;0,600&display=swap"
       rel="stylesheet"
     />
+    <!-- Deferred fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
 
-    <title>Elsa &amp; Elie — Wedding · 5 September 2026</title>
+    <title>Georges &amp; Rita — Wedding · 5 September 2026</title>
 
     <style>
       /* Prevent FOUC */

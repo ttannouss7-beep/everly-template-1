@@ -24,7 +24,7 @@ export function MusicProvider({ children }: { children: ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
 
-  const getAudio = () => {
+  const getAudio = useCallback(() => {
     if (!audioRef.current && content.musicSrc) {
       const audio = new Audio(content.musicSrc);
       audio.loop = true;
@@ -32,31 +32,27 @@ export function MusicProvider({ children }: { children: ReactNode }) {
       audioRef.current = audio;
     }
     return audioRef.current;
-  };
+  }, []);
 
   const startMusic = useCallback(() => {
     if (!content.enableMusic || !content.musicSrc) return;
     const audio = getAudio();
-    if (audio && !playing) {
-      audio.play().catch(() => {
-        // Autoplay blocked by browser — user needs to interact first
-      });
-      setPlaying(true);
+    if (audio && !audio.currentTime) {
+      audio.play().then(() => setPlaying(true)).catch(() => {});
     }
-  }, [playing]);
+  }, [getAudio]);
 
   const toggleMusic = useCallback(() => {
     if (!content.enableMusic || !content.musicSrc) return;
     const audio = getAudio();
     if (!audio) return;
-    if (playing) {
+    if (!audio.paused) {
       audio.pause();
       setPlaying(false);
     } else {
-      audio.play().catch(() => {});
-      setPlaying(true);
+      audio.play().then(() => setPlaying(true)).catch(() => {});
     }
-  }, [playing]);
+  }, [getAudio]);
 
   return (
     <MusicContext.Provider value={{ playing, startMusic, toggleMusic }}>

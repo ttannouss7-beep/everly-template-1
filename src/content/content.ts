@@ -6,10 +6,10 @@
 export const content = {
   // ── COUPLE ───────────────────────────────────────────────
   couple: {
-    bride: "Elsa",
-    groom: "Elie",
-    fullNames: "Elie & Elsa",
-    hashtag: "#ElsaxElie2026",
+    bride: "Rita",
+    groom: "Georges",
+    fullNames: "Georges & Rita",
+    hashtag: "#GeorgesxRita2026",
   },
 
   // ── DATES ────────────────────────────────────────────────
@@ -20,7 +20,7 @@ export const content = {
   hero: {
     preTitle: "We Are Getting Married",
     date: "5 · IX · 2026",
-    location: "St Elige, Mayfouk",
+    location: "Costantine & Helene, Kaslik",
     ctaLabel: "RSVP",
     // Path to your hero video (place in /public/video/hero.mp4)
     // Leave empty "" to show the fallback image instead
@@ -60,7 +60,7 @@ export const content = {
       "Together with our families, we invite you to celebrate our union and the beginning of our forever.",
       "Thank you for being part of our story.",
     ],
-    signature: "With love, Elie & Elsa",
+    signature: "With love, Georges & Rita",
   },
 
   // ── VENUE / EVENTS (gold background section) ─────────────
@@ -73,8 +73,8 @@ export const content = {
         title: "Wedding Ceremony",
         date: "Saturday, 5 September 2026",
         time: "2:30 PM",
-        location: "St Elige Church",
-        address: "Mayfouk, Lebanon",
+        location: "Costantine & Helene Church",
+        address: "Kaslik, Lebanon",
         mapLink: "https://maps.google.com/?q=34.1830083,35.7767968",
         description: "Please be seated by 2:15 PM",
       },
@@ -83,10 +83,30 @@ export const content = {
         title: "Wedding Reception",
         date: "Saturday, 5 September 2026",
         time: "4:00 PM onwards",
-        location: "St Elige, Mayfouk",
-        address: "Mayfouk, Lebanon",
+        location: "Costantine & Helene, Kaslik",
+        address: "Kaslik, Lebanon",
         mapLink: "https://maps.google.com/?q=34.1830083,35.7767968",
         description: "Cocktails, dinner and dancing",
+      },
+      {
+        id: "groom-house",
+        title: "Groom's House",
+        date: "Saturday, 5 September 2026",
+        time: "",
+        location: "Tannous Residence",
+        address: "Kaslik, Lebanon",
+        mapLink: "https://maps.google.com/?q=34.1830083,35.7767968",
+        description: "Georges's family home",
+      },
+      {
+        id: "bride-house",
+        title: "Bride's House",
+        date: "Saturday, 5 September 2026",
+        time: "",
+        location: "Bride's Residence",
+        address: "Kaslik, Lebanon",
+        mapLink: "https://maps.google.com/?q=34.1830083,35.7767968",
+        description: "Rita's family home",
       },
     ],
   },
@@ -147,8 +167,8 @@ export const content = {
         title: "Welcome Dinner",
         date: "Friday, 4 September 2026",
         time: "7:00 PM",
-        location: "St Elige, Mayfouk",
-        address: "Mayfouk, Lebanon",
+        location: "Costantine & Helene, Kaslik",
+        address: "Kaslik, Lebanon",
         description: "Join us the evening before for an intimate dinner with close family and friends.",
       },
       {
@@ -156,8 +176,8 @@ export const content = {
         title: "Farewell Brunch",
         date: "Sunday, 6 September 2026",
         time: "11:00 AM",
-        location: "St Elige, Mayfouk",
-        address: "Mayfouk, Lebanon",
+        location: "Costantine & Helene, Kaslik",
+        address: "Kaslik, Lebanon",
         description: "A relaxed morning brunch before you head home. Dress code: casual.",
       },
     ],
@@ -166,14 +186,14 @@ export const content = {
   // ── LOCATION & TRANSPORT ─────────────────────────────────
   location: {
     title: "Getting There",
-    venueName: "St Elige",
-    address: "Mayfouk, Lebanon",
+    venueName: "Costantine & Helene",
+    address: "Kaslik, Lebanon",
     mapLink: "https://maps.google.com/?q=34.1830083,35.7767968",
     transport: [
       {
         mode: "By Car",
         icon: "car",
-        details: "Mayfouk is located in the Byblos district. Free parking is available on site.",
+        details: "Kaslik is located in the Byblos district. Free parking is available on site.",
       },
       {
         mode: "From Beirut",
@@ -199,7 +219,7 @@ export const content = {
     subtitle: "We have secured preferential rates at the properties below",
     hotels: [
       {
-        name: "Mayfouk Chalets",
+        name: "Kaslik Chalets",
         type: "Near-venue accommodation",
         distance: "5 min drive",
         note: "Limited rooms available — book early!",
@@ -332,7 +352,7 @@ export const content = {
   footer: {
     tagline: "Together forever",
     date: "5 September 2026",
-    location: "St Elige, Mayfouk",
+    location: "Costantine & Helene, Kaslik",
   },
 
   // ── LANGUAGE TOGGLE ──────────────────────────────────────
@@ -349,9 +369,9 @@ export const content = {
 // ── ARABIC TRANSLATIONS ───────────────────────────────────
 export const contentAR = {
   couple: {
-    bride: "إيلسا",
-    groom: "إيلي",
-    fullNames: "إيلي وإيلسا",
+    bride: "ريتا",
+    groom: "جورج",
+    fullNames: "جورج وريتا",
   },
   hero: {
     preTitle: "نحن نتزوج",
@@ -376,7 +396,7 @@ export const contentAR = {
       "نتشرف برفقة عائلتينا بدعوتكم للاحتفال بزواجنا وبداية حياتنا المشتركة.",
       "شكراً لكونكم جزءاً من قصتنا.",
     ],
-    signature: "بكل محبة، إيلي وإيلسا",
+    signature: "بكل محبة، شربل وجويل",
   },
   venue: {
     title: "حفل الزفاف",

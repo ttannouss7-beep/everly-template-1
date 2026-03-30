@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { content } from "@/content/content";
+import { useContent } from "@/hooks/useContent";
 import { GiftBow } from "./Illustrations";
 
 export default function Gifts() {
+  const { content, lang } = useContent();
   const { gifts } = content;
 
   return (
@@ -81,9 +82,9 @@ export default function Gifts() {
                 />
               </div>
 
-              {/* Bank name */}
+              {/* Account name label */}
               <span className="font-body text-xs tracking-[0.22em] uppercase text-gold mb-2 block">
-                {account.bank}
+                {lang === "ar" ? "اسم الحساب" : "Account Name"}
               </span>
 
               {/* Account holder */}
@@ -94,26 +95,16 @@ export default function Gifts() {
                 {account.name}
               </h3>
 
-              {/* IBAN / BIC */}
+              {/* Account Number */}
               <div className="space-y-2">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-                  <span className="font-body text-xs tracking-[0.18em] uppercase text-gold/70 w-20 flex-shrink-0">
-                    IBAN
+                  <span className="font-body text-xs tracking-[0.18em] uppercase text-gold/70 flex-shrink-0" style={{ width: "10rem" }}>
+                    {lang === "ar" ? "رقم الحساب" : "Account Number"}
                   </span>
                   <span className="font-body text-forest/80 text-sm tracking-wider break-all">
                     {account.iban}
                   </span>
                 </div>
-                {account.bic && (
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-                    <span className="font-body text-xs tracking-[0.18em] uppercase text-gold/70 w-20 flex-shrink-0">
-                      BIC/SWIFT
-                    </span>
-                    <span className="font-body text-forest/80 text-sm tracking-wider">
-                      {account.bic}
-                    </span>
-                  </div>
-                )}
               </div>
             </motion.div>
           ))}

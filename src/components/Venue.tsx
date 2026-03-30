@@ -1,11 +1,8 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { content } from "@/content/content";
-import { contentAR } from "@/content/content";
-import { useLang } from "@/context/LanguageContext";
+import { useContent } from "@/hooks/useContent";
 
 export default function Venue() {
-  const { lang } = useLang();
+  const { content, contentAR, lang } = useContent();
   const c = lang === "ar" ? contentAR.venue : content.venue;
 
   return (
@@ -39,7 +36,7 @@ export default function Venue() {
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 text-left">
-          {content.venue.events.map((event, i) => (
+          {("events" in c ? c.events : content.venue.events).map((event: typeof content.venue.events[number], i: number) => (
             <motion.div
               key={event.id}
               initial={{ opacity: 0, y: 24 }}
@@ -59,7 +56,7 @@ export default function Venue() {
 
               <div className="space-y-3.5">
                 <DetailRow icon={<CalendarIcon />} text={event.date} />
-                <DetailRow icon={<ClockIcon />} text={event.time} />
+                {event.time && <DetailRow icon={<ClockIcon />} text={event.time} />}
                 <DetailRow icon={<PinIcon />} text={`${event.location} — ${event.address}`} />
                 {event.description && <DetailRow icon={<InfoIcon />} text={event.description} />}
               </div>
@@ -74,7 +71,7 @@ export default function Venue() {
                   aria-label={`View ${event.location} on map`}
                 >
                   <PinIcon />
-                  Location
+                  {lang === "ar" ? "الموقع" : "Location"}
                 </a>
               </div>
             </motion.div>
@@ -105,7 +102,4 @@ function PinIcon() {
 }
 function InfoIcon() {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>;
-}
-function MapIcon({ className }: { className?: string }) {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" /><line x1="8" y1="2" x2="8" y2="18" /><line x1="16" y1="6" x2="16" y2="22" /></svg>;
 }

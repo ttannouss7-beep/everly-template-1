@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import emailjs from "@emailjs/browser";
-import { content } from "@/content/content";
-import { contentAR } from "@/content/content";
+import { content, contentAR } from "@/content/content";
 import { useLang } from "@/context/LanguageContext";
 
-// ── EmailJS configuration ─────────────────────────────────────────────────
-// Set these three values in your EmailJS dashboard (https://www.emailjs.com)
-const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";   // e.g. "service_abc123"
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";  // e.g. "template_xyz456"
-const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";   // e.g. "abcDEFghiJKL..."
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 interface GuestEntry { name: string; dietary: string; }
 interface FormState {
@@ -19,6 +17,7 @@ interface FormState {
   guests: GuestEntry[];
   childrenAttending: "yes" | "no" | "";
   message: string;
+  honeypot: string;
 }
 type SubmitStatus = "idle" | "submitting" | "success" | "declined" | "error";
 
@@ -28,9 +27,10 @@ export default function RSVP() {
   const [form, setForm] = useState<FormState>({
     attending: "", email: "", guestCount: 1,
     guests: [{ name: "", dietary: "" }],
-    childrenAttending: "", message: "",
+    childrenAttending: "", message: "", honeypot: "",
   });
   const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
   const setAttending = (val: "yes" | "no") => setForm((f) => ({ ...f, attending: val }));
   const setGuestCount = (count: number) => {
@@ -44,6 +44,47 @@ export default function RSVP() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (form.honeypot) {
+      setStatus("success");
+      return;
+    }
+
+    const errors: string[] = [];
+
+    if (!form.attending) {
+      errors.push("Please indicate whether you will be attending.");
+    }
+
+    if (!form.email.trim() || !EMAIL_REGEX.test(form.email.trim())) {
+      errors.push("Please enter a valid email address.");
+    }
+
+    if (form.attending === "yes") {
+      if (form.guestCount < 1 || form.guestCount > 10) {
+        errors.push("Guest count must be between 1 and 10.");
+      }
+
+      for (let i = 0; i < form.guests.length; i++) {
+        if (!form.guests[i].name.trim()) {
+          errors.push(`Please enter a name for person ${i + 1}.`);
+        }
+        if (form.guests[i].name.length > 100) {
+          errors.push(`Name for person ${i + 1} must be under 100 characters.`);
+        }
+      }
+    }
+
+    if (form.message.length > 1000) {
+      errors.push("Message must be under 1000 characters.");
+    }
+
+    if (errors.length > 0) {
+      setValidationErrors(errors);
+      return;
+    }
+
+    setValidationErrors([]);
     setStatus("submitting");
 
     const guestSummary = form.guests
@@ -62,7 +103,8 @@ export default function RSVP() {
     };
 
     try {
-      await emailjs.send(
+      const emailjs = await import("@emailjs/browser");
+      await emailjs.default.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         templateParams,
@@ -123,7 +165,6 @@ export default function RSVP() {
               transition={{ duration: 0.5 }}
               onSubmit={handleSubmit}
               className="bg-white rounded-2xl p-6 md:p-9 text-left shadow-xl space-y-6"
-              noValidate
               aria-label="RSVP submission form"
             >
               {/* Attendance */}
@@ -224,6 +265,25 @@ export default function RSVP() {
                 <label htmlFor="rsvp-message" className="font-body font-semibold text-sage-dark text-sm block mb-2">{c.fields.message.label}</label>
                 <textarea id="rsvp-message" rows={3} value={form.message} onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))} placeholder={c.fields.message.placeholder} className="w-full px-4 py-3 rounded-xl border border-sage/20 font-body text-sage-dark placeholder:text-sage/40 focus:outline-none focus:border-gold transition-colors resize-none text-base" />
               </div>
+
+              <input
+                type="text"
+                name="website"
+                value={form.honeypot}
+                onChange={(e) => setForm((f) => ({ ...f, honeypot: e.target.value }))}
+                autoComplete="off"
+                tabIndex={-1}
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0 }}
+              />
+
+              {validationErrors.length > 0 && (
+                <div role="alert" className="text-red-600 text-sm font-body space-y-1">
+                  {validationErrors.map((err, i) => (
+                    <p key={i}>{err}</p>
+                  ))}
+                </div>
+              )}
 
               {isError && (
                 <p role="alert" className="text-red-600 text-sm font-body text-center">

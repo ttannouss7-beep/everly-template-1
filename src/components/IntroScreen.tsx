@@ -17,20 +17,26 @@ export default function IntroScreen({ onEnter }: Props) {
     videoRef.current?.load();
   }, []);
 
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => {
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, []);
+
   const handleTap = () => {
     if (leaving) return;
     startMusic();
     const v = videoRef.current;
-    if (!v) { setLeaving(true); setTimeout(onEnter, 300); return; }
+    if (!v) { setLeaving(true); timerRef.current = setTimeout(onEnter, 300); return; }
     v.currentTime = 0;
     const p = v.play();
-    if (p) p.catch(() => { setLeaving(true); setTimeout(onEnter, 300); });
+    if (p) p.catch(() => { setLeaving(true); timerRef.current = setTimeout(onEnter, 300); });
   };
 
   const enter = () => {
     if (leaving) return;
     setLeaving(true);
-    setTimeout(onEnter, 900);
+    timerRef.current = setTimeout(onEnter, 900);
   };
 
   return (
@@ -43,6 +49,10 @@ export default function IntroScreen({ onEnter }: Props) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.9, ease: "easeInOut" }}
           onClick={handleTap}
+          onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleTap(); } }}
+          role="button"
+          tabIndex={0}
+          aria-label="Enter wedding invitation"
         >
           <video
             ref={videoRef}

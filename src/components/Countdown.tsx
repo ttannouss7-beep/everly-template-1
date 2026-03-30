@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
-import { content } from "@/content/content";
-import { contentAR } from "@/content/content";
-import { useLang } from "@/context/LanguageContext";
+import { useContent } from "@/hooks/useContent";
 import { useCountdown } from "@/hooks/useCountdown";
 
 export default function Countdown() {
-  const { lang } = useLang();
+  const { content, contentAR, lang } = useContent();
   const c = lang === "ar" ? contentAR.countdown : content.countdown;
   const { days, hours, minutes, isPast } = useCountdown(content.weddingDate);
 
@@ -52,7 +50,7 @@ export default function Countdown() {
             className="font-display text-forest text-4xl md:text-6xl"
             role="status" aria-live="polite"
           >
-            Today is the day!
+            {lang === "ar" ? "!اليوم هو اليوم" : "Today is the day!"}
           </motion.div>
         ) : (
           <div

@@ -1,8 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { content } from "@/content/content";
-import { contentAR } from "@/content/content";
-import { useLang } from "@/context/LanguageContext";
+import { useContent } from "@/hooks/useContent";
 
 const TRANSPORT_ICONS: Record<string, React.ReactNode> = {
   car:   <CarIcon />,
@@ -12,7 +10,7 @@ const TRANSPORT_ICONS: Record<string, React.ReactNode> = {
 };
 
 export default function Location() {
-  const { lang } = useLang();
+  const { content, contentAR, lang } = useContent();
   const c = lang === "ar" ? contentAR.location : content.location;
 
   return (
@@ -80,7 +78,7 @@ export default function Location() {
               aria-label="View venue on Google Maps"
             >
               <MapPinIcon className="w-3.5 h-3.5" />
-              View on Map
+              {lang === "ar" ? "عرض على الخريطة" : "View on Map"}
             </a>
           </motion.div>
         </div>

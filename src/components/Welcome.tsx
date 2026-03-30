@@ -1,12 +1,10 @@
 import { motion } from "framer-motion";
-import { content } from "@/content/content";
-import { contentAR } from "@/content/content";
-import { useLang } from "@/context/LanguageContext";
+import { useContent } from "@/hooks/useContent";
 import GalleryMarquee from "./GalleryMarquee";
 import { OliveTree } from "./Illustrations";
 
 export default function Welcome() {
-  const { lang } = useLang();
+  const { content, contentAR, lang } = useContent();
   const c = lang === "ar" ? contentAR.welcome : content.welcome;
 
   return (
