@@ -21,7 +21,14 @@ const Footer = lazy(() => import("@/components/Footer"));
 
 export default function App() {
   const [entered, setEntered] = useState(false);
+  const [fontsReady, setFontsReady] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    document.fonts.ready.then(() => setFontsReady(true));
+    const fallback = setTimeout(() => setFontsReady(true), 3000);
+    return () => clearTimeout(fallback);
+  }, []);
 
   useEffect(() => {
     if (!entered) return;
@@ -50,7 +57,7 @@ export default function App() {
             )}
           </AnimatePresence>
 
-          {entered && (
+          {entered && fontsReady && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
